@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 
-app.get('https://url-shrinkerapp.herokuapp.com/', async(req, res) => {
+app.get('/', async(req, res) => {
     const shortUrls = await shortUrl.find();
     res.render('index', { shortUrls: shortUrls });
 })
