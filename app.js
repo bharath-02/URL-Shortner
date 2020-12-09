@@ -30,3 +30,15 @@ app.post('/shortUrls', async(req, res) => {
     await shortUrl.create({ fullUrl: req.body.fullUrl });
     res.redirect('/');
 })
+
+app.get('/:shortUrl', async(req, res) => {
+    const shorturl = await shortUrl.findOne({ shortUrl: req.params.shortUrl })
+    if (shorturl == null) {
+        return res.sendStatus(404);
+    }
+
+    shorturl.clicks++;
+    shorturl.save();
+
+    res.redirect(shorturl.fullUrl);
+})
