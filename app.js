@@ -19,3 +19,14 @@ mongoose.connect('mongodb://localhost:27017/urlShortener', {
 
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
+
+
+app.get('/', async(req, res) => {
+    const shortUrls = await shortUrl.find();
+    res.render('index', { shortUrls: shortUrls });
+})
+
+app.post('/shortUrls', async(req, res) => {
+    await shortUrl.create({ fullUrl: req.body.fullUrl });
+    res.redirect('/');
+})
