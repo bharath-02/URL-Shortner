@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const colors = require('colors');
 const shortUrl = require('./models/shortUrl');
+require('dotenv').config();
+
 const app = express();
 
 
@@ -43,7 +45,7 @@ app.get('/:shortUrl', async(req, res) => {
     res.redirect(shorturl.fullUrl);
 })
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`.yellow.bold);
