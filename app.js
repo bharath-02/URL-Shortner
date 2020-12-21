@@ -7,8 +7,8 @@ const shortUrl = require('./models/shortUrl');
 require('dotenv').config();
 
 const app = express();
-// process.env.DB_URL || 
-const db_url = 'mongodb://localhost:27017/url-shortner'
+
+const db_url = process.env.DB_URL || 'mongodb://localhost:27017/url-shortner'
 
 mongoose.connect(db_url, {
     useNewUrlParser: true,
