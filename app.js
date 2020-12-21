@@ -8,13 +8,14 @@ require('dotenv').config();
 
 const app = express();
 
+const db_url = process.env.DB_URL || 'mongodb://localhost:27017/url-shortner'
 
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(db_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
     if (err) {
-        console.log('Error            Occured'.red.bold);
+        console.log('Error Occured'.red.bold);
     } else {
         console.log('Server connected to mongoDB'.cyan.bold);
     }
