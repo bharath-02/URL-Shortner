@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const colors = require('colors');
 const shortUrl = require('./models/shortUrl');
+
 require('dotenv').config();
 
 const app = express();
@@ -18,7 +20,7 @@ mongoose.connect(process.env.DB_URL, {
     }
 })
 
-
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
