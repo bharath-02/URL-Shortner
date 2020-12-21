@@ -14,7 +14,7 @@ mongoose.connect(process.env.DB_URL, {
     useUnifiedTopology: true
 }, (err) => {
     if (err) {
-        console.log('Error Occured'.red.bold);
+        console.log('Error            Occured'.red.bold);
     } else {
         console.log('Server connected to mongoDB'.cyan.bold);
     }
