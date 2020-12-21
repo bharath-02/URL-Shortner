@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 
 
-mongoose.connect('mongodb://localhost:27017/urlShortener', {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
